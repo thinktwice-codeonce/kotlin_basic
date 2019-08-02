@@ -1,7 +1,7 @@
 
 
 fun main() {
-    testConstructors()
+    testInterface()
 }
 
 ///-----------------------------------------------------------------------------
@@ -65,5 +65,73 @@ fun testConstructors() {
 }
 
 ///-----------------------------------------------------------------------------
+//Inheritance
+fun testInheritance() {
+    var women: Girl = Women()
+    women.think()
+}
 
+open class Girl {
+    open fun think() {
+        println("Girls like rich men!")
+    }
+}
 
+class Women : Girl() {
+    override fun think() {
+        println("Women like good men")
+    }
+}
+
+///-----------------------------------------------------------------------------
+//Interface
+interface MyInterface {
+    var myVar: Int
+    fun myFun()
+}
+
+interface InterfaceA {
+    fun printMeFromA() {
+        println("Print me from A")
+    }
+}
+
+interface InterfaceB {
+    fun printMeFromB() {
+        println("Print me from B")
+    }
+}
+
+class MyInterfaceImpl: MyInterface, InterfaceA, InterfaceB {
+    override var myVar = 15;
+    override fun myFun() {
+        println("Implement function of interface: ${myVar}")
+    }
+}
+
+fun testInterface() {
+    var myInterfaceImpl = MyInterfaceImpl()
+    myInterfaceImpl.myFun()
+    myInterfaceImpl.printMeFromA()
+    myInterfaceImpl.printMeFromB()
+}
+
+///-----------------------------------------------------------------------------
+//Access modifier
+/**
+ * "internal" access modifier = default access modifier in Java
+ * No access modifier = public access modifier
+ */
+internal class MyAccessModifier {
+    internal var a: Int = 0
+    internal var b: String = ""
+}
+
+///-----------------------------------------------------------------------------
+//Function Extension
+class Alien {
+    var skill: String = "First Skill"
+    fun printMySkill() {
+        println("Alien skill: ${skill}")
+    }
+}

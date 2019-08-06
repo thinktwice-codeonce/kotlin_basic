@@ -1,7 +1,7 @@
 
 
 fun main() {
-    testInterface()
+    testFunctionExtension()
 }
 
 ///-----------------------------------------------------------------------------
@@ -130,8 +130,34 @@ internal class MyAccessModifier {
 ///-----------------------------------------------------------------------------
 //Function Extension
 class Alien {
-    var skill: String = "First Skill"
+    var skills: String = "First Skill"
     fun printMySkill() {
-        println("Alien skill: ${skill}")
+        println("Alien skills: ${skills}")
     }
+
+    companion object {
+        fun show(): String {
+            return "What are you doing"
+        }
+    }
+}
+
+fun Alien.addMoreSkills(a: Alien) : String {
+    var mirrorAlien = Alien()
+    mirrorAlien.skills = this.skills + a.skills;
+    return mirrorAlien.skills;
+}
+
+fun testFunctionExtension() {
+    var a1 = Alien()
+    var a2 = Alien()
+
+    a1.skills = "A1 skills "
+    a2.skills = "A2 skills "
+
+    var a3 = Alien()
+    a3.skills = a1.addMoreSkills(a2)
+    a3.printMySkill()
+
+    println("Skills: " + Alien.show())
 }

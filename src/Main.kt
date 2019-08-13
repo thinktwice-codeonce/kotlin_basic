@@ -1,7 +1,7 @@
 
 
 fun main() {
-    testDelegation()
+    testGeneric2()
 }
 
 ///-----------------------------------------------------------------------------
@@ -217,6 +217,10 @@ class MyGenericClass<in T>( a: T) {
     }
 }
 
+fun testGeneric2() {
+    val t: TestGeneric<Book> = TestGeneric()
+    t.callSomething(Book("abc", "Phong", 5))
+}
 ///-----------------------------------------------------------------------------
 //Test delegation
 interface Base {

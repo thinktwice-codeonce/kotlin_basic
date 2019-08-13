@@ -1,7 +1,7 @@
 
 
 fun main() {
-    testGeneric2()
+    testDestructingDeclaration()
 }
 
 ///-----------------------------------------------------------------------------
@@ -50,7 +50,7 @@ interface Human {
 }
 
 ///-----------------------------------------------------------------------------
-class Student(val name: String, var age: Int) {
+data class Student(val name: String, var age: Int) {
     var message: String = "First message"
     constructor(yourName: String, yourAge: Int, message: String): this(yourName, yourAge) {
         this.message = message
@@ -165,7 +165,11 @@ fun testFunctionExtension() {
 
 ///-----------------------------------------------------------------------------
 //Data classes
-data class Book(val name: String, val publisher: String, var reviewScore: Int)
+ open class Book(val name: String, val publisher: String, var reviewScore: Int)
+
+data class ChildBook(val a: String) : Book("abc", "Phong", 6) {
+
+}
 
 fun testDataClass() {
     val book = Book("Book A", "Nguyen Nhat Anh", 5)
@@ -257,4 +261,21 @@ fun testDelegation() {
     Derived(BaseImpl(123)).printMe()
     Derived(BaseImpl(123)).print3()
     println(Derived(BaseImpl(456)).a)
+}
+
+///-----------------------------------------------------------------------------
+
+data class ClassP(var first: String, var second: String)
+
+//Test destructing declaration
+fun testDestructingDeclaration() {
+    val student = Student("Phong", 26)
+    val (a, b) = student
+
+    val classP = ClassP("First value", "Second value")
+    val (x, y) = classP
+
+    println("Student value: $a - $b")
+    println("P value: $x - $y")
+
 }

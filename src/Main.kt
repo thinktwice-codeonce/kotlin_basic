@@ -1,4 +1,8 @@
-
+/**
+ * Some definition not understand clearly:
+ *  - Generic in/out T
+ *  - Generic reified T: a Type as a parameter
+ */
 
 fun main() {
     testDestructingDeclaration()
@@ -279,3 +283,6 @@ fun testDestructingDeclaration() {
     println("P value: $x - $y")
 
 }
+
+
+//TODO: test vararg in method: vararg in kotlin = ... in Java
